@@ -1,7 +1,7 @@
 # Docker Remote Agent
 
-EXPOSE 8085
-EXPOSE 54663
 
-ONBUILD RUN npm install -g gulp karma
-
+```
+$ docker pull obihann/docker-bamboo-node
+$ docker run -e HOME=/root/ -e BAMBOO_SERVER=http://hostname:port/bamboo -i -t obihann/docker-bamboo-node
+```
