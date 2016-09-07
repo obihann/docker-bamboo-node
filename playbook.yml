@@ -1,0 +1,18 @@
+- hosts: all
+  roles:
+      - common
+      - java8
+      - node6
+  tasks:
+    - name: Install global Node packages
+      become: yes
+      npm: name={{item}} global=true
+      with_items:
+          - karma
+          - gulp
+
+    - name: Install Maven
+      become: yes
+      apt: name={{item}} state=latest
+      with_items:
+          - maven

@@ -1,0 +1,10 @@
+---
+- name: Install core packages 
+  become: yes
+  apt: name={{item}} state=present
+  with_items:
+    - git-core
+    - build-essential
+    - python-software-properties
+    - apt-transport-https
+    - libfontconfig

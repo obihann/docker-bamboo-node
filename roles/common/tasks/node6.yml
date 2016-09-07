@@ -1,0 +1,19 @@
+---
+    - name: Check if your distribution is supported
+      become: yes
+      uri: url=https://deb.nodesource.com/node/dists/{{ansible_distribution_release}}/Release
+
+    - name: Add the Nodesource apt key
+      become: yes
+      apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
+
+    - name: Add nodesource repository
+      become: yes
+      apt_repository: repo='deb https://deb.nodesource.com/node_6.x trusty main' state=present
+
+    - name: Install NodeJS
+      become: yes
+      apt: name={{item}} state=installed
+      with_items:
+        - nodejs
+
